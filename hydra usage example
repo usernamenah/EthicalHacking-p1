@@ -1,5 +1,8 @@
 # Hydra Usage Example
 
+lINKEDIN LINK FOR DEMO : 
+https://www.linkedin.com/posts/sujith-pappala-634529225_hydra-usage-in-kali-linux-password-cracking-activity-7273289148923297792-pixC?utm_source=share&utm_medium=member_desktop
+
 This is a demonstration of using the `Hydra` tool for brute-forcing login credentials via HTTP POST requests. The example uses a local host server (127.0.0.1) with sample username and password files.
 
 ## File Contents
